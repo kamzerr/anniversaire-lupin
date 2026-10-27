@@ -1,0 +1,401 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   Quête d'Anniversaire « Arsène Lupin » — Charte Graphique & Design System
+   ========================================================================== */
+
+:root {
+  --bg-color: #0f1115;
+  --card-bg: #181a20;
+  --card-border: #997d25;
+  --card-border-glow: rgba(212, 175, 55, 0.25);
+  --gold-classic: #d4af37;
+  --gold-aged: #997d25;
+  --gold-light: #f7e7a9;
+  --gold-gradient: linear-gradient(135deg, #f5e4a8 0%, #d4af37 50%, #997d25 100%);
+  --gold-gradient-hover: linear-gradient(135deg, #fff2be 0%, #e0bd49 50%, #b8972e 100%);
+  --text-main: #e6e6e6;
+  --text-muted: #a3a8b5;
+  --text-gold: #e2c875;
+  --error-color: #e06c75;
+  --font-title: 'Cinzel', serif;
+  --font-body: 'Cormorant Garamond', Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+  background-color: var(--bg-color);
+  background-image: 
+    radial-gradient(ellipse at 50% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 50% 100%, rgba(15, 17, 21, 0.9) 0%, #0a0b0e 100%);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 19px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 30px 20px;
+}
+
+/* ==========================================================================
+   Conteneur & Carte Principale (Responsive max 480px)
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  background-color: var(--card-bg);
+  background-image: radial-gradient(circle at top right, rgba(212, 175, 55, 0.05), transparent 40%);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 36px 26px 30px;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.6),
+    0 0 20px var(--card-border-glow),
+    inset 0 0 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Ornements d'angle vintage */
+.card::before,
+.card::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-color: var(--gold-classic);
+  pointer-events: none;
+}
+.card::before {
+  top: 8px;
+  left: 8px;
+  border-top: 1px solid var(--gold-classic);
+  border-left: 1px solid var(--gold-classic);
+}
+.card::after {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 1px solid var(--gold-classic);
+  border-right: 1px solid var(--gold-classic);
+}
+
+/* ==========================================================================
+   Sceau & En-tête
+   ========================================================================== */
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.seal-container {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.seal {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #7a1f1d, #420d0c 75%, #250505 100%);
+  border: 2px dashed rgba(212, 175, 55, 0.85);
+  box-shadow: 
+    0 4px 10px rgba(0, 0, 0, 0.7),
+    0 0 12px rgba(184, 41, 38, 0.4),
+    inset 0 0 8px rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.seal-inner {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #f7e7a9;
+  text-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.8),
+    0 0 6px rgba(212, 175, 55, 0.5);
+  user-select: none;
+}
+
+.chapter-subtitle {
+  font-family: var(--font-title);
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-classic);
+  margin-bottom: 6px;
+}
+
+.chapter-title {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--gold-aged);
+  font-size: 10px;
+  margin: 16px 0;
+}
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold-aged), transparent);
+}
+
+/* ==========================================================================
+   Contenu de l'Énigme
+   ========================================================================== */
+
+.content {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--text-main);
+  margin-bottom: 26px;
+}
+
+.content p {
+  margin-bottom: 16px;
+}
+
+.content p:last-child {
+  margin-bottom: 0;
+}
+
+.riddle-box {
+  background: rgba(15, 17, 21, 0.65);
+  border-left: 3px solid var(--gold-classic);
+  padding: 16px 18px;
+  margin: 18px 0;
+  border-radius: 0 4px 4px 0;
+  font-style: italic;
+  color: var(--text-gold);
+}
+
+.riddle-box p {
+  margin-bottom: 8px;
+}
+.riddle-box p:last-child {
+  margin-bottom: 0;
+}
+
+.clue-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 12px 0;
+}
+
+.clue-list li {
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(153, 125, 37, 0.25);
+}
+.clue-list li:last-child {
+  border-bottom: none;
+}
+
+.clue-list strong {
+  color: var(--gold-classic);
+  font-family: var(--font-title);
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   Formulaire & Saisie du Code Secret
+   ========================================================================== */
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.input-label {
+  display: block;
+  font-family: var(--font-title);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold-aged);
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.input-secret {
+  width: 100%;
+  padding: 14px 16px;
+  background-color: #0d0f13;
+  border: 1px solid var(--gold-aged);
+  border-radius: 4px;
+  color: #ffffff;
+  font-family: var(--font-title);
+  font-size: 18px;
+  letter-spacing: 4px;
+  text-align: center;
+  text-transform: uppercase;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.input-secret:focus {
+  border-color: var(--gold-classic);
+  box-shadow: 
+    0 0 10px rgba(212, 175, 55, 0.4),
+    inset 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 14px 20px;
+  background: var(--gold-gradient);
+  border: none;
+  border-radius: 4px;
+  color: #111317;
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-submit:hover,
+.btn-submit:active {
+  background: var(--gold-gradient-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(212, 175, 55, 0.35);
+}
+
+/* Message d'erreur */
+.error-message {
+  display: none;
+  color: var(--error-color);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-style: italic;
+  text-align: center;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ==========================================================================
+   Section Révélation (Destination Débloquée)
+   ========================================================================== */
+
+.revelation {
+  display: none;
+  background: linear-gradient(145deg, rgba(30, 24, 15, 0.85), rgba(18, 20, 26, 0.95));
+  border: 1px solid var(--gold-classic);
+  border-radius: 6px;
+  padding: 24px 20px;
+  box-shadow: 
+    0 0 20px rgba(212, 175, 55, 0.2),
+    inset 0 0 15px rgba(212, 175, 55, 0.1);
+  text-align: center;
+  animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.revelation-badge {
+  font-family: var(--font-title);
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-classic);
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.revelation-text {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #ffffff;
+}
+
+.revelation-text strong {
+  color: var(--gold-classic);
+  font-family: var(--font-title);
+  letter-spacing: 1px;
+}
+
+.revelation-final {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  font-size: 21px;
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Animations & Effets
+   ========================================================================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-8px); }
+  40% { transform: translateX(8px); }
+  60% { transform: translateX(-6px); }
+  80% { transform: translateX(6px); }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+  border-color: var(--error-color) !important;
+}
+
+/* ==========================================================================
+   Pied de page
+   ========================================================================== */
+
+.footer-quote {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-style: italic;
+  letter-spacing: 0.5px;
+}

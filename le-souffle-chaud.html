@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arsène Lupin — Chapitre III : Le Souffle Chaud</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <div class="card">
+      <header class="header">
+        <div class="seal-container">
+          <div class="seal" aria-hidden="true">
+            <span class="seal-inner">A.L</span>
+          </div>
+        </div>
+        <div class="chapter-subtitle">Arsène Lupin</div>
+        <h1 class="chapter-title">Chapitre III</h1>
+        <div class="divider">♦ ─── ♦ ─── ♦</div>
+      </header>
+
+      <div class="content">
+        <p>Les filatures ne te font pas peur. Mais avant d'accéder au grand secret, prenons une pause digne des palais d'Orient.</p>
+        
+        <div class="riddle-box">
+          <p>« Né des traditions du Levant, je tapisse les murs de mes banquettes fermes et de mes velours d'apparat. Sur mon assise, on partage le thé, les confidences et les longs moments en famille. »</p>
+        </div>
+
+        <p>Quel est le nom traditionnel de ce grand canapé du salon ?</p>
+      </div>
+
+      <section id="lock-section">
+        <form onsubmit="event.preventDefault(); verifierCode(['SEDARI', 'SDARI', 'CANAPE']);">
+          <div class="form-group">
+            <label class="input-label" for="secret-code">Code d'accès secret</label>
+            <input 
+              type="text" 
+              id="secret-code" 
+              class="input-secret" 
+              placeholder="VOTRE RÉPONSE..." 
+              autocorrect="off" 
+              autocapitalize="none" 
+              spellcheck="false" 
+              autocomplete="off"
+              required
+            >
+          </div>
+          <button type="submit" class="btn-submit">Déverrouiller le secret</button>
+        </form>
+        <div id="error" class="error-message">Mot de passe incorrect. Pensez aux douceurs et étoffes de l'Orient...</div>
+      </section>
+
+      <section id="revelation" class="revelation" role="region" aria-live="polite">
+        <span class="revelation-badge">Destination Révélée</span>
+        <p class="revelation-text">
+          Une intuition sans faille. Rejoins le salon et approche-toi du <strong>sedari</strong>. Soulève délicatement le coussin d'assise central pour récupérer l'ultime message clandestin.
+        </p>
+      </section>
+
+      <footer class="footer-quote">
+        « Même au milieu du danger le plus vif, le confort d'un salon reste souverain. »
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    function verifierCode(valeursAcceptees) {
+      const input = document.getElementById('secret-code');
+      const err = document.getElementById('error');
+      const revelation = document.getElementById('revelation');
+      const lockSection = document.getElementById('lock-section');
+
+      const reponse = input.value
+        .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toUpperCase();
+
+      if (valeursAcceptees.includes(reponse)) {
+        lockSection.style.display = 'none';
+        revelation.style.display = 'block';
+        err.style.display = 'none';
+      } else {
+        err.style.display = 'block';
+        input.classList.add('shake');
+        setTimeout(() => input.classList.remove('shake'), 400);
+        input.value = '';
+        input.focus();
+      }
+    }
+  </script>
+</body>
+</html>
